@@ -1,0 +1,14 @@
+resources:
+  - name: git-repo
+    type: git
+    source:
+      uri: https://github.com/a1dutch/surebet-crawler-betfair.git
+      branch: master
+
+jobs:
+  - name: assemble
+    plan: 
+      - get: git-repo
+      - task: assemble
+        privileged: true
+        file: git-repo/pipeline/assemble.yml
